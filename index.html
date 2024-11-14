@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="chat-header">
+                <!-- Use url_for to reference the image in the static folder -->
+                <img src="{{ url_for('static', filename='images/pngwing.com.png') }}" alt="Toyota Logo" class="logo">
+                <h1>Toyota-Chatbot</h1>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot-message">Hello! Ask me anything about Toyota cars.</div>
+                {% if reply %}
+                    <div class="message user-message">{{ reply }}</div>
+                {% endif %}
+            </div>
+            <form method="POST" class="chat-form">
+                <input type="text" name="message" placeholder="Type your question here..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
